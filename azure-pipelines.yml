@@ -1,0 +1,11 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+container: techallylw/lacework-cli:ubuntu-1804
+
+steps:
+- script: lacework version
+  displayName: 'lacework-cli version'
