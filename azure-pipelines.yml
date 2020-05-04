@@ -1,0 +1,16 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+container: techallylw/lacework-cli:ubuntu-1804
+
+steps:
+- task: Docker@2
+  inputs:
+    repository: 'techallylw/container-vuln'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+- script: lacework help
+  displayName: 'Test access to the Lacework CLI'
